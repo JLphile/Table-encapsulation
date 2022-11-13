@@ -10,7 +10,11 @@
           :prop="item.prop"
           :label="item.label"
           :width="item.width"
-        ></el-table-column>
+        >
+          <template #default="scope">
+            <div v-html="item.callback && item.callback(scope.row)"></div>
+          </template>
+        </el-table-column>
         <el-table-column v-else :prop="item.prop" :label="item.label" :width="item.width"></el-table-column>
       </template>
     </el-table>

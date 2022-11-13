@@ -11,8 +11,10 @@ const column = [
     type: "function",
     label: "URL地址",
     prop: "date",
-    callback: () => {
-      return 11
+    callback: (data) => {
+      console.log(data)
+      
+      return `<a href='https://www.bilibili.com'>${data.name}</a>`
     },
   },
   {
