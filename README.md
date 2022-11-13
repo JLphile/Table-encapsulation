@@ -271,3 +271,50 @@ export default router;
 </template>
 ```
 
+# 六、 代码编写
+
+## 作用域插槽
+
+```vue
+//子组件
+子组件数据绑定到data然后通过scope将数据传给父组件
+...
+<template #default="scope">
+	<slot :name="item.slot_name" :data="scope.row" />
+</template>
+...
+```
+
+
+
+```vue
+//父组件
+const column = [
+  {
+    type: "slot",
+    label: "操作",
+    prop: "operation",
+    slot_name: "operation",
+  },
+]
+
+<template>
+  <ATable :column="column" checkbox index>
+    //通过自定义的slot接收子组件绑定到data的数据
+		<template v-slot:operation="slot">
+ 			 {{slot.data.name}}  
+		</template>
+  </ATable>
+</template>
+```
+
+
+
+
+
+
+
+
+
+
+

@@ -15,6 +15,19 @@
             <div v-html="item.callback && item.callback(scope.row)"></div>
           </template>
         </el-table-column>
+
+        <el-table-column
+          v-if="item.type === 'slot'"
+          :key="item.prop"
+          :prop="item.prop"
+          :label="item.label"
+          :width="item.width"
+        >
+          <template #default="scope">
+            <slot :name="item.slot_name" :data="scope.row" />
+          </template>
+        </el-table-column>
+
         <el-table-column v-else :prop="item.prop" :label="item.label" :width="item.width"></el-table-column>
       </template>
     </el-table>
@@ -25,27 +38,31 @@
 const tableData = [
   {
     date: "2016-05-03",
-    name: "Tom",
+    name: "Bilibili",
     address: "No. 189, Grove St, Los Angeles",
-    sex: "男",
+    gender: "男",
+    id: 1,
   },
   {
     date: "2016-05-02",
     name: "Tom",
     address: "No. 189, Grove St, Los Angeles",
-    sex: "男",
+    gender: "女",
+    id: 2,
   },
   {
     date: "2016-05-04",
-    name: "Tom",
+    name: "Lily",
     address: "No. 189, Grove St, Los Angeles",
-    sex: "男",
+    gender: "女",
+    id: 3,
   },
   {
     date: "2016-05-01",
-    name: "Tom",
+    name: "Jack",
     address: "No. 189, Grove St, Los Angeles",
-    sex: "男",
+    gender: "男",
+    id: 4,
   },
 ]
 
